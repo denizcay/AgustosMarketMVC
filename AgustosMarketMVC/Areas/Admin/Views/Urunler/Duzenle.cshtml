@@ -1,0 +1,26 @@
+﻿@model  HomeViewModel
+@{ 
+    ViewBag.Title = "Düzenle";
+}
+
+<a asp-controller="Urunler" asp-action="Index">Listeye Dön</a>
+<form class="form-control" method="post" asp-controller="Urunler" asp-action="Duzenle">
+    <div class="mb-3">
+        <input type="hidden" asp-for="SeciliUrun.Id"/>
+        <input type="hidden" asp-for="SeciliUrun.Kategori"/>
+        <label asp-for="SeciliUrun.UrunAd" class="form-label">Ürün Adı</label>
+        <input asp-for="SeciliUrun.UrunAd" class="form-control" />
+        <span asp-validation-for="SeciliUrun.UrunAd"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="SeciliUrun.BirimFiyat" class="form-label">Birim Fiyatı</label>
+        <input asp-for="SeciliUrun.BirimFiyat" class="form-control" />
+        <span asp-validation-for="SeciliUrun.BirimFiyat"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="SeciliUrun.KategoriId" class="form-label">Kategori</label>
+        <select asp-for="SeciliUrun.KategoriId" asp-items="@Model.SKategoriler"></select>
+        <span asp-validation-for="SeciliUrun.KategoriId"></span>
+    </div>
+    <button class="btn btn-primary">KAYDET</button>
+</form>
